@@ -1,6 +1,6 @@
 system-config.js*
-app/**/*.js
-app/**/*.map
+contact-manager/scripts/**/*.js
+contact-manager/scripts/**/*.map
 node_modules
 jspm_packages
 bower_components
