@@ -3,10 +3,11 @@ System.config({
   defaultJSExtensions: true,
   transpiler: "typescript",
   paths: {
-    "*": "src/*",
+    "*": "dist/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   map: {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@2.0.0",
     "aurelia-framework": "npm:aurelia-framework@1.0.8",

@@ -1,4 +1,9 @@
 {
+  "name": "hello_world_typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "prepublish": "typings install"
+  },
   "jspm": {
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^2.0.0",
@@ -10,6 +15,7 @@
   },
   "devDependencies": {
     "jspm": "^0.16.48",
-    "typescript": "^2.1.4"
+    "typescript": "^2.1.4",
+    "typings": "^2.0.0"
   }
 }
