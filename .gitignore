@@ -1,9 +1,4 @@
-system-config.js*
-contact-manager/scripts/**/*.js
-contact-manager/scripts/**/*.map
 node_modules
 jspm_packages
 bower_components
-aot/*
-dist/*
-yarn.lock
+dist
