@@ -7,11 +7,16 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
-
   map: {
+    "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@2.0.0",
+    "aurelia-fetch-client": "npm:aurelia-fetch-client@1.1.0",
     "aurelia-framework": "npm:aurelia-framework@1.0.8",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.1.0",
+    "bootstrap": "github:twbs/bootstrap@3.3.7",
+    "fetch": "github:github/fetch@2.0.1",
+    "jquery": "npm:jquery@3.1.1",
+    "text": "github:systemjs/plugin-text@0.0.9",
     "typescript": "npm:typescript@2.1.4",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -76,6 +81,9 @@ System.config({
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
+    "github:twbs/bootstrap@3.3.7": {
+      "jquery": "npm:jquery@3.1.1"
+    },
     "npm:asn1.js@4.9.0": {
       "bn.js": "npm:bn.js@4.11.6",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -88,6 +96,11 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "npm:util@0.10.3"
+    },
+    "npm:aurelia-animator-css@1.0.1": {
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.2",
+      "aurelia-pal": "npm:aurelia-pal@1.1.1",
+      "aurelia-templating": "npm:aurelia-templating@1.1.4"
     },
     "npm:aurelia-binding@1.1.0": {
       "aurelia-logging": "npm:aurelia-logging@1.2.0",
