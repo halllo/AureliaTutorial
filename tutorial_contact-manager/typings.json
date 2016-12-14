@@ -26,6 +26,7 @@
     "aurelia-templating-router": "github:aurelia/templating-router"
   },
   "globalDependencies": {
+    "nprogress": "registry:dt/nprogress#0.0.0+20161119044246",
     "url": "github:aurelia/fetch-client/doc/url.d.ts#bbe0777ef710d889a05759a65fa2c9c3865fc618",
     "whatwg-fetch": "registry:dt/whatwg-fetch#0.0.0+20160524142046"
   }

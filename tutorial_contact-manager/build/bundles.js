@@ -31,7 +31,9 @@ module.exports = {
         "bootstrap",
         "bootstrap/css/bootstrap.css!text",
         "fetch",
-        "jquery"
+        "jquery",
+        "nprogress",
+        "nprogress/nprogress.css!text"
       ],
       "options": {
         "inject": true,
