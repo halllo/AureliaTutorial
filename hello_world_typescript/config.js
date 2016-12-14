@@ -465,6 +465,11 @@ System.config({
       "indexof": "npm:indexof@0.0.1"
     }
   },
+  depCache: {
+    "app.js": [
+      "./todo"
+    ]
+  },
   bundles: {
     "app-build.js": [
       "app.html!github:systemjs/plugin-text@0.0.9.js",
@@ -506,6 +511,8 @@ System.config({
       "npm:aurelia-logging@1.2.0/aurelia-logging.js",
       "npm:aurelia-metadata@1.0.2.js",
       "npm:aurelia-metadata@1.0.2/aurelia-metadata.js",
+      "npm:aurelia-pal-browser@1.1.0.js",
+      "npm:aurelia-pal-browser@1.1.0/aurelia-pal-browser.js",
       "npm:aurelia-pal@1.1.1.js",
       "npm:aurelia-pal@1.1.1/aurelia-pal.js",
       "npm:aurelia-path@1.1.1.js",
@@ -561,11 +568,6 @@ System.config({
       "npm:aurelia-templating@1.1.4/aurelia-templating.js",
       "npm:jquery@3.1.1.js",
       "npm:jquery@3.1.1/dist/jquery.js"
-    ]
-  },
-  depCache: {
-    "app.js": [
-      "./todo"
     ]
   }
 });
