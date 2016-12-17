@@ -12,7 +12,9 @@ import environment from './environment';
 export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
-    .feature('resources');
+    .globalResources(['./resources/elements/loading-indicator'])
+    //.feature('resources')
+    ;
 
   if (environment.debug) {
     aurelia.use.developmentLogging();
