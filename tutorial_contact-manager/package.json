@@ -9,7 +9,9 @@
     "url": "https://github.com/halllo/AureliaTutorial/"
   },
   "scripts": {
-    "prepublish": "typings install"
+    "prepublish": "typings install",
+    "test": "gulp test",
+    "e2e": "gulp serve e2e"
   },
   "jspm": {
     "dependencies": {
