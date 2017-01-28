@@ -34,9 +34,11 @@
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.1.0",
       "aurelia-framework": "npm:aurelia-framework@^1.0.8",
+      "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@^0.22.0",
       "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.1.0",
       "fetch": "github:github/fetch@^2.0.2",
       "jquery": "npm:jquery@^3.1.1",
+      "materialize": "github:Dogfalo/materialize@0.97.8",
       "text": "github:systemjs/plugin-text@^0.0.9"
     },
     "devDependencies": {

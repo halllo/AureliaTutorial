@@ -29,7 +29,9 @@ module.exports = {
         "aurelia-pal-browser",
         "text",
         "fetch",
-        "jquery"
+        "jquery",
+        "aurelia-materialize-bridge",
+        "materialize",
       ],
       "options": {
         "inject": true,
