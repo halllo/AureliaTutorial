@@ -475,16 +475,6 @@ System.config({
     }
   },
   bundles: {
-    "app-build-c78df70051.js": [
-      "app.html!github:systemjs/plugin-text@0.0.9.js",
-      "app.js",
-      "footer-bar.html!github:systemjs/plugin-text@0.0.9.js",
-      "main.js",
-      "nav-bar.html!github:systemjs/plugin-text@0.0.9.js",
-      "nav-bar.js",
-      "welcome.html!github:systemjs/plugin-text@0.0.9.js",
-      "welcome.js"
-    ],
     "materialize-5ec9d9b1b9.js": [
       "github:Dogfalo/materialize@0.97.8.js",
       "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-css@0.1.32.js",
@@ -493,6 +483,19 @@ System.config({
       "github:Dogfalo/materialize@0.97.8/js/materialize.js",
       "npm:jquery@2.2.4.js",
       "npm:jquery@2.2.4/dist/jquery.js"
+    ],
+    "app-build-dc5ce01f59.js": [
+      "app.html!github:systemjs/plugin-text@0.0.9.js",
+      "app.js",
+      "footer-bar.html!github:systemjs/plugin-text@0.0.9.js",
+      "main.js",
+      "nav-bar.html!github:systemjs/plugin-text@0.0.9.js",
+      "nav-bar.js",
+      "users.html!github:systemjs/plugin-text@0.0.9.js",
+      "users.js",
+      "welcome.css!github:systemjs/plugin-text@0.0.9.js",
+      "welcome.html!github:systemjs/plugin-text@0.0.9.js",
+      "welcome.js"
     ],
     "vendor-14e9d77a72.js": [
       "github:github/fetch@2.0.2.js",
@@ -688,9 +691,13 @@ System.config({
     ]
   },
   depCache: {
+    "main.js": [
+      "jquery"
+    ],
     "nav-bar.js": [
       "aurelia-router",
-      "aurelia-framework"
+      "aurelia-framework",
+      "jquery"
     ]
   }
 });
