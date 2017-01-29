@@ -10,7 +10,7 @@ module.exports = {
         "inject": true,
         "minify": true,
         "depCache": true,
-        "rev": false
+        "rev": true
       }
     },
     "dist/vendor": {
@@ -30,14 +30,28 @@ module.exports = {
         "text",
         "fetch",
         "jquery",
-        "aurelia-materialize-bridge",
-        "materialize",
+        "[aurelia-materialize-bridge]",
+        "[aurelia-materialize-bridge/**/*.js]",
+        "aurelia-materialize-bridge/**/*.css!text",
+        "aurelia-materialize-bridge/**/*.html!text"
       ],
       "options": {
         "inject": true,
         "minify": true,
         "depCache": false,
-        "rev": false
+        "rev": true
+      }
+    },
+    "dist/materialize": {
+      "includes": [
+        "materialize",
+        "materialize/**/*.css!text"
+      ],
+      "options": {
+        "inject": true,
+        "minify": true,
+        "depCache": false,
+        "rev": true
       }
     }
   }
