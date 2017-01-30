@@ -1,6 +1,7 @@
 import {Router} from 'aurelia-router';
 import {bindable} from 'aurelia-framework';
-import * as $ from 'jquery';
+
+declare var $;
 
 export class NavBar {
   

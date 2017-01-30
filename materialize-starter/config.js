@@ -484,7 +484,7 @@ System.config({
       "npm:jquery@2.2.4.js",
       "npm:jquery@2.2.4/dist/jquery.js"
     ],
-    "app-build-dc5ce01f59.js": [
+    "app-build-82a1390f79.js": [
       "app.html!github:systemjs/plugin-text@0.0.9.js",
       "app.js",
       "footer-bar.html!github:systemjs/plugin-text@0.0.9.js",
@@ -692,12 +692,12 @@ System.config({
   },
   depCache: {
     "main.js": [
-      "jquery"
+      "jquery",
+      "materialize"
     ],
     "nav-bar.js": [
       "aurelia-router",
-      "aurelia-framework",
-      "jquery"
+      "aurelia-framework"
     ]
   }
 });
