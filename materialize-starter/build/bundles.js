@@ -30,6 +30,8 @@ module.exports = {
         "text",
         "fetch",
         "jquery",
+        "nprogress",
+        "nprogress/nprogress.css!text",
         "[aurelia-materialize-bridge]",
         "[aurelia-materialize-bridge/**/*.js]",
         "aurelia-materialize-bridge/**/*.css!text",

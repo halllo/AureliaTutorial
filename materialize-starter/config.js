@@ -17,6 +17,7 @@ System.config({
     "fetch": "github:github/fetch@2.0.2",
     "jquery": "npm:jquery@2.2.4",
     "materialize": "github:Dogfalo/materialize@0.97.8",
+    "nprogress": "github:rstacruz/nprogress@0.2.0",
     "text": "github:systemjs/plugin-text@0.0.9",
     "typescript": "npm:typescript@2.1.5",
     "github:Dogfalo/materialize@0.97.8": {
@@ -85,6 +86,9 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
+    },
+    "github:rstacruz/nprogress@0.2.0": {
+      "css": "github:systemjs/plugin-css@0.1.32"
     },
     "npm:asn1.js@4.9.1": {
       "bn.js": "npm:bn.js@4.11.6",
@@ -484,22 +488,33 @@ System.config({
       "npm:jquery@2.2.4.js",
       "npm:jquery@2.2.4/dist/jquery.js"
     ],
-    "app-build-82a1390f79.js": [
+    "app-build-acd6864915.js": [
+      "app.css!github:systemjs/plugin-text@0.0.9.js",
       "app.html!github:systemjs/plugin-text@0.0.9.js",
       "app.js",
+      "employee.html!github:systemjs/plugin-text@0.0.9.js",
+      "employee.js",
+      "employees.html!github:systemjs/plugin-text@0.0.9.js",
+      "employees.js",
+      "environment.js",
       "footer-bar.html!github:systemjs/plugin-text@0.0.9.js",
       "main.js",
       "nav-bar.html!github:systemjs/plugin-text@0.0.9.js",
       "nav-bar.js",
-      "users.html!github:systemjs/plugin-text@0.0.9.js",
-      "users.js",
+      "resources/elements/loading-indicator.js",
+      "resources/index.js",
+      "web-api.js",
       "welcome.css!github:systemjs/plugin-text@0.0.9.js",
       "welcome.html!github:systemjs/plugin-text@0.0.9.js",
       "welcome.js"
     ],
-    "vendor-14e9d77a72.js": [
+    "vendor-07c4cbc189.js": [
       "github:github/fetch@2.0.2.js",
       "github:github/fetch@2.0.2/fetch.js",
+      "github:rstacruz/nprogress@0.2.0.js",
+      "github:rstacruz/nprogress@0.2.0/nprogress.css!github:systemjs/plugin-css@0.1.32.js",
+      "github:rstacruz/nprogress@0.2.0/nprogress.css!github:systemjs/plugin-text@0.0.9.js",
+      "github:rstacruz/nprogress@0.2.0/nprogress.js",
       "github:systemjs/plugin-text@0.0.9.js",
       "github:systemjs/plugin-text@0.0.9/text.js",
       "npm:aurelia-binding@1.1.1.js",
@@ -691,13 +706,31 @@ System.config({
     ]
   },
   depCache: {
+    "employee.js": [
+      "aurelia-framework",
+      "aurelia-router",
+      "./web-api"
+    ],
+    "employees.js": [
+      "aurelia-framework",
+      "./web-api"
+    ],
     "main.js": [
       "jquery",
-      "materialize"
+      "materialize",
+      "./environment"
     ],
     "nav-bar.js": [
       "aurelia-router",
       "aurelia-framework"
+    ],
+    "resources/elements/loading-indicator.js": [
+      "nprogress",
+      "aurelia-framework"
+    ],
+    "web-api.js": [
+      "aurelia-framework",
+      "aurelia-fetch-client"
     ]
   }
 });

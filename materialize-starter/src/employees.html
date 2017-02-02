@@ -1,0 +1,23 @@
+<template>
+
+  <div class="container">
+    <h4>${heading}</h4>
+    <div class="section">
+      <md-card md-title="${employee.name}" repeat.for="employee of employees">
+        <div class="card-content">
+          I am a very simple card. I am good at containing small bits of
+          information. I am convenient because I require little markup to
+          use effectively.
+          <br/>
+          I am a very simple card. I am good at containing small bits of
+          information. I am convenient because I require little markup to
+          use effectively.
+        </div>
+        <div class="card-action">
+          <a route-href="route: employee; params.bind: {id:employee.id}">open</a>
+        </div
+      </md-card>
+    </div>
+  </div>
+
+</template>
