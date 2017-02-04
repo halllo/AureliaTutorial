@@ -2,8 +2,9 @@
 
   <div class="container">
     <h4>${heading}</h4>
+    <a class="btn-floating waves-effect waves-light orange" md-waves href="#/employee"><i class="material-icons">add</i></a>
     <div class="section">
-      <md-card md-title="${employee.name}" repeat.for="employee of employees">
+      <md-card md-title="${employee.firstname} ${employee.lastname}" repeat.for="employee of employees">
         <div class="card-content">
           I am a very simple card. I am good at containing small bits of
           information. I am convenient because I require little markup to
@@ -15,6 +16,7 @@
         </div>
         <div class="card-action">
           <a route-href="route: employee; params.bind: {id:employee.id}">open</a>
+          <a click.delegate="delete(employee)">delete</a>
         </div
       </md-card>
     </div>

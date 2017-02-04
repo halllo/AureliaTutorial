@@ -9,6 +9,7 @@ export class Employee {
   router: Router;
   
   public employee: EmployeeDto;
+  public heading: string;
 
   constructor(api: WebApi, router: Router) {
     this.api = api;
@@ -19,9 +20,22 @@ export class Employee {
     if (params.id) {
       this.employeeId = params.id;
       return this.load().then(() => {
-        route.navModel.title = this.employee.name;
+        route.navModel.title = this.heading = `${this.employee.firstname} ${this.employee.lastname}`;
       });
+    } else {
+      this.employee = <EmployeeDto>{ };
+      route.navModel.title = this.heading = 'neuer Mitarbeiter';
     }
+  }
+
+  public save() {
+    return this.api.save(this.employee)
+      .then(e => {
+        this.router.navigateBack();
+      })
+      .catch(reason => {
+        console.error(`cannot save ${this.employeeId}: ${reason}`);
+      });
   }
 
   load() {

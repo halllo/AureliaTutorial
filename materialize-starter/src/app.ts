@@ -14,7 +14,7 @@ export class App {
     config.map([
       { route: ['', 'welcome'],   name: 'welcome',    moduleId: 'welcome',    nav: false,   title: 'Welcome' },
       { route: ['employees'],     name: 'employees',  moduleId: 'employees',  nav: true,    title: 'alle' },
-      { route: ['employee/:id'],  name: 'employee',   moduleId: 'employee',   nav: false,   title: '' },
+      { route: ['employee/:id?'],  name: 'employee',   moduleId: 'employee',   nav: false,   title: '' },
     ]);
 
     this.router = router;
