@@ -12,6 +12,7 @@
     "aurelia-loader": "github:aurelia/loader",
     "aurelia-logging": "github:aurelia/logging",
     "aurelia-logging-console": "github:aurelia/logging-console",
+    "aurelia-materialize-bridge": "github:aurelia-ui-toolkits/aurelia-materialize-bridge/dist/aurelia-materialize-bridge.d.ts",
     "aurelia-metadata": "github:aurelia/metadata",
     "aurelia-pal": "github:aurelia/pal",
     "aurelia-pal-browser": "github:aurelia/pal-browser",

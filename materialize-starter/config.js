@@ -479,16 +479,7 @@ System.config({
     }
   },
   bundles: {
-    "materialize-5ec9d9b1b9.js": [
-      "github:Dogfalo/materialize@0.97.8.js",
-      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-css@0.1.32.js",
-      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-text@0.0.9.js",
-      "github:Dogfalo/materialize@0.97.8/css/materialize.min.css!github:systemjs/plugin-text@0.0.9.js",
-      "github:Dogfalo/materialize@0.97.8/js/materialize.js",
-      "npm:jquery@2.2.4.js",
-      "npm:jquery@2.2.4/dist/jquery.js"
-    ],
-    "app-build-acd6864915.js": [
+    "app-build-178e9fbd74.js": [
       "app.css!github:systemjs/plugin-text@0.0.9.js",
       "app.html!github:systemjs/plugin-text@0.0.9.js",
       "app.js",
@@ -507,6 +498,15 @@ System.config({
       "welcome.css!github:systemjs/plugin-text@0.0.9.js",
       "welcome.html!github:systemjs/plugin-text@0.0.9.js",
       "welcome.js"
+    ],
+    "materialize-5ec9d9b1b9.js": [
+      "github:Dogfalo/materialize@0.97.8.js",
+      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-css@0.1.32.js",
+      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-text@0.0.9.js",
+      "github:Dogfalo/materialize@0.97.8/css/materialize.min.css!github:systemjs/plugin-text@0.0.9.js",
+      "github:Dogfalo/materialize@0.97.8/js/materialize.js",
+      "npm:jquery@2.2.4.js",
+      "npm:jquery@2.2.4/dist/jquery.js"
     ],
     "vendor-07c4cbc189.js": [
       "github:github/fetch@2.0.2.js",
@@ -709,7 +709,8 @@ System.config({
     "employee.js": [
       "aurelia-framework",
       "aurelia-router",
-      "./web-api"
+      "./web-api",
+      "aurelia-materialize-bridge"
     ],
     "employees.js": [
       "aurelia-framework",
