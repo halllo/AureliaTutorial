@@ -9,6 +9,7 @@ export async function configure(aurelia: Aurelia) {
     .standardConfiguration()
     .feature('resources')
     .plugin('aurelia-materialize-bridge', bridge => bridge.useAll())
+    .plugin('aurelia-binding-loader')
     ;
 
   if (environment.debug) {

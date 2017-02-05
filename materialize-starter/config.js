@@ -8,12 +8,14 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   map: {
+    "aurelia-binding-loader": "npm:aurelia-binding-loader@1.1.0",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@2.0.1",
     "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.1.0",
     "aurelia-framework": "npm:aurelia-framework@1.0.8",
     "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@0.22.0",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.1.0",
+    "css": "npm:jspm-loader-css-modules@1.0.1-beta1",
     "fetch": "github:github/fetch@2.0.2",
     "jquery": "npm:jquery@2.2.4",
     "materialize": "github:Dogfalo/materialize@0.97.8",
@@ -102,6 +104,10 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "npm:util@0.10.3"
+    },
+    "npm:aurelia-binding-loader@1.1.0": {
+      "aurelia-logging": "npm:aurelia-logging@1.2.0",
+      "aurelia-templating": "npm:aurelia-templating@1.2.0"
     },
     "npm:aurelia-binding@1.1.1": {
       "aurelia-logging": "npm:aurelia-logging@1.2.0",
@@ -335,6 +341,24 @@ System.config({
       "public-encrypt": "npm:public-encrypt@4.0.0",
       "randombytes": "npm:randombytes@2.0.3"
     },
+    "npm:css-modules-loader-core@1.0.1": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "icss-replace-symbols": "npm:icss-replace-symbols@1.0.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "postcss": "npm:postcss@5.1.2",
+      "postcss-modules-extract-imports": "npm:postcss-modules-extract-imports@1.0.0",
+      "postcss-modules-local-by-default": "npm:postcss-modules-local-by-default@1.1.1",
+      "postcss-modules-scope": "npm:postcss-modules-scope@1.0.2",
+      "postcss-modules-values": "npm:postcss-modules-values@1.2.2"
+    },
+    "npm:css-selector-tokenizer@0.6.0": {
+      "cssesc": "npm:cssesc@0.1.0",
+      "fastparse": "npm:fastparse@1.1.1",
+      "regexpu-core": "npm:regexpu-core@1.0.0"
+    },
+    "npm:debounce@1.0.0": {
+      "date-now": "npm:date-now@1.0.1"
+    },
     "npm:des.js@1.0.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
@@ -360,11 +384,29 @@ System.config({
       "create-hash": "npm:create-hash@1.1.2",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0"
     },
+    "npm:fastparse@1.1.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:has-flag@1.0.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:hash.js@1.0.3": {
       "inherits": "npm:inherits@2.0.1"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:js-base64@2.1.9": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:jspm-loader-css-modules@1.0.1-beta1": {
+      "jspm-loader-css": "npm:jspm-loader-css@1.0.1-beta1"
+    },
+    "npm:jspm-loader-css@1.0.1-beta1": {
+      "css-modules-loader-core": "npm:css-modules-loader-core@1.0.1",
+      "debounce": "npm:debounce@1.0.0",
+      "path": "npm:path@0.12.7",
+      "toposort": "npm:toposort@0.2.12"
     },
     "npm:miller-rabin@4.0.0": {
       "bn.js": "npm:bn.js@4.11.6",
@@ -385,11 +427,41 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:path@0.12.7": {
+      "process": "npm:process@0.11.9",
+      "util": "npm:util@0.10.3"
+    },
     "npm:pbkdf2@3.0.9": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hmac": "npm:create-hmac@1.1.4",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:postcss-modules-extract-imports@1.0.0": {
+      "postcss": "npm:postcss@5.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:postcss-modules-local-by-default@1.1.1": {
+      "css-selector-tokenizer": "npm:css-selector-tokenizer@0.6.0",
+      "postcss": "npm:postcss@5.1.2"
+    },
+    "npm:postcss-modules-scope@1.0.2": {
+      "css-selector-tokenizer": "npm:css-selector-tokenizer@0.6.0",
+      "postcss": "npm:postcss@5.1.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:postcss-modules-values@1.2.2": {
+      "icss-replace-symbols": "npm:icss-replace-symbols@1.0.2",
+      "postcss": "npm:postcss@5.1.2"
+    },
+    "npm:postcss@5.1.2": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "js-base64": "npm:js-base64@2.1.9",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "source-map": "npm:source-map@0.5.6",
+      "supports-color": "npm:supports-color@3.2.3"
     },
     "npm:process@0.11.9": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -423,6 +495,16 @@ System.config({
       "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31"
     },
+    "npm:regexpu-core@1.0.0": {
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "regenerate": "npm:regenerate@1.3.2",
+      "regjsgen": "npm:regjsgen@0.2.0",
+      "regjsparser": "npm:regjsparser@0.1.5",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
+    },
+    "npm:regjsparser@0.1.5": {
+      "jsesc": "npm:jsesc@0.5.0"
+    },
     "npm:ripemd160@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -455,8 +537,16 @@ System.config({
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
+    "npm:supports-color@3.2.3": {
+      "has-flag": "npm:has-flag@1.0.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:timers-browserify@1.4.2": {
       "process": "npm:process@0.11.9"
+    },
+    "npm:toposort@0.2.12": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:typescript@2.1.5": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
@@ -479,7 +569,16 @@ System.config({
     }
   },
   bundles: {
-    "app-build-178e9fbd74.js": [
+    "materialize-5ec9d9b1b9.js": [
+      "github:Dogfalo/materialize@0.97.8.js",
+      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-css@0.1.32.js",
+      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-text@0.0.9.js",
+      "github:Dogfalo/materialize@0.97.8/css/materialize.min.css!github:systemjs/plugin-text@0.0.9.js",
+      "github:Dogfalo/materialize@0.97.8/js/materialize.js",
+      "npm:jquery@2.2.4.js",
+      "npm:jquery@2.2.4/dist/jquery.js"
+    ],
+    "app-build-33deac1cce.js": [
       "app.css!github:systemjs/plugin-text@0.0.9.js",
       "app.html!github:systemjs/plugin-text@0.0.9.js",
       "app.js",
@@ -490,6 +589,9 @@ System.config({
       "environment.js",
       "footer-bar.html!github:systemjs/plugin-text@0.0.9.js",
       "main.js",
+      "module0.css!github:systemjs/plugin-text@0.0.9.js",
+      "module1.css!github:systemjs/plugin-text@0.0.9.js",
+      "module2.css!github:systemjs/plugin-text@0.0.9.js",
       "nav-bar.html!github:systemjs/plugin-text@0.0.9.js",
       "nav-bar.js",
       "resources/elements/loading-indicator.js",
@@ -499,24 +601,25 @@ System.config({
       "welcome.html!github:systemjs/plugin-text@0.0.9.js",
       "welcome.js"
     ],
-    "materialize-5ec9d9b1b9.js": [
-      "github:Dogfalo/materialize@0.97.8.js",
-      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-css@0.1.32.js",
-      "github:Dogfalo/materialize@0.97.8/css/materialize.css!github:systemjs/plugin-text@0.0.9.js",
-      "github:Dogfalo/materialize@0.97.8/css/materialize.min.css!github:systemjs/plugin-text@0.0.9.js",
-      "github:Dogfalo/materialize@0.97.8/js/materialize.js",
-      "npm:jquery@2.2.4.js",
-      "npm:jquery@2.2.4/dist/jquery.js"
-    ],
-    "vendor-07c4cbc189.js": [
+    "vendor-ee50224118.js": [
       "github:github/fetch@2.0.2.js",
       "github:github/fetch@2.0.2/fetch.js",
+      "github:jspm/nodelibs-buffer@0.1.0.js",
+      "github:jspm/nodelibs-buffer@0.1.0/index.js",
+      "github:jspm/nodelibs-fs@0.1.2.js",
+      "github:jspm/nodelibs-fs@0.1.2/index.js",
+      "github:jspm/nodelibs-path@0.1.0.js",
+      "github:jspm/nodelibs-path@0.1.0/index.js",
+      "github:jspm/nodelibs-process@0.1.2.js",
+      "github:jspm/nodelibs-process@0.1.2/index.js",
       "github:rstacruz/nprogress@0.2.0.js",
       "github:rstacruz/nprogress@0.2.0/nprogress.css!github:systemjs/plugin-css@0.1.32.js",
       "github:rstacruz/nprogress@0.2.0/nprogress.css!github:systemjs/plugin-text@0.0.9.js",
       "github:rstacruz/nprogress@0.2.0/nprogress.js",
       "github:systemjs/plugin-text@0.0.9.js",
       "github:systemjs/plugin-text@0.0.9/text.js",
+      "npm:aurelia-binding-loader@1.1.0.js",
+      "npm:aurelia-binding-loader@1.1.0/dist/index.js",
       "npm:aurelia-binding@1.1.1.js",
       "npm:aurelia-binding@1.1.1/aurelia-binding.js",
       "npm:aurelia-bootstrapper@2.0.1.js",
@@ -701,8 +804,118 @@ System.config({
       "npm:aurelia-templating-router@1.0.1/router-view.js",
       "npm:aurelia-templating@1.2.0.js",
       "npm:aurelia-templating@1.2.0/aurelia-templating.js",
+      "npm:base64-js@0.0.8.js",
+      "npm:base64-js@0.0.8/lib/b64.js",
+      "npm:buffer@3.6.0.js",
+      "npm:buffer@3.6.0/index.js",
+      "npm:css-modules-loader-core@1.0.1.js",
+      "npm:css-modules-loader-core@1.0.1/lib/index.js",
+      "npm:css-modules-loader-core@1.0.1/lib/parser.js",
+      "npm:css-selector-tokenizer@0.6.0.js",
+      "npm:css-selector-tokenizer@0.6.0/lib/index.js",
+      "npm:css-selector-tokenizer@0.6.0/lib/parse.js",
+      "npm:css-selector-tokenizer@0.6.0/lib/parseValues.js",
+      "npm:css-selector-tokenizer@0.6.0/lib/stringify.js",
+      "npm:css-selector-tokenizer@0.6.0/lib/stringifyValues.js",
+      "npm:cssesc@0.1.0.js",
+      "npm:cssesc@0.1.0/cssesc.js",
+      "npm:date-now@1.0.1.js",
+      "npm:date-now@1.0.1/index.js",
+      "npm:debounce@1.0.0.js",
+      "npm:debounce@1.0.0/index.js",
+      "npm:fastparse@1.1.1.js",
+      "npm:fastparse@1.1.1/lib/Parser.js",
+      "npm:icss-replace-symbols@1.0.2.js",
+      "npm:icss-replace-symbols@1.0.2/lib/index.js",
+      "npm:ieee754@1.1.8.js",
+      "npm:ieee754@1.1.8/index.js",
+      "npm:inherits@2.0.1.js",
+      "npm:inherits@2.0.1/inherits_browser.js",
+      "npm:isarray@1.0.0.js",
+      "npm:isarray@1.0.0/index.js",
       "npm:jquery@2.2.4.js",
-      "npm:jquery@2.2.4/dist/jquery.js"
+      "npm:jquery@2.2.4/dist/jquery.js",
+      "npm:js-base64@2.1.9.js",
+      "npm:js-base64@2.1.9/base64.js",
+      "npm:jspm-loader-css-modules@1.0.1-beta1.js",
+      "npm:jspm-loader-css-modules@1.0.1-beta1/index.js",
+      "npm:jspm-loader-css@1.0.1-beta1.js",
+      "npm:jspm-loader-css@1.0.1-beta1/autoprefixer.js",
+      "npm:jspm-loader-css@1.0.1-beta1/index.js",
+      "npm:jspm-loader-css@1.0.1-beta1/lib/BUILD_MODE.js",
+      "npm:jspm-loader-css@1.0.1-beta1/lib/CSSLoader.js",
+      "npm:jspm-loader-css@1.0.1-beta1/lib/CSSLoaderBuilded.js",
+      "npm:jspm-loader-css@1.0.1-beta1/lib/CSSLoaderDOM.js",
+      "npm:jspm-loader-css@1.0.1-beta1/lib/CSSModuleLoaderProcess.js",
+      "npm:jspm-loader-css@1.0.1-beta1/lib/plugins.js",
+      "npm:path-browserify@0.0.0.js",
+      "npm:path-browserify@0.0.0/index.js",
+      "npm:path@0.12.7.js",
+      "npm:path@0.12.7/path.js",
+      "npm:postcss-modules-extract-imports@1.0.0.js",
+      "npm:postcss-modules-extract-imports@1.0.0/lib/index.js",
+      "npm:postcss-modules-local-by-default@1.1.1.js",
+      "npm:postcss-modules-local-by-default@1.1.1/index.js",
+      "npm:postcss-modules-scope@1.0.2.js",
+      "npm:postcss-modules-scope@1.0.2/lib/index.js",
+      "npm:postcss-modules-values@1.2.2.js",
+      "npm:postcss-modules-values@1.2.2/lib/index.js",
+      "npm:postcss@5.1.2.js",
+      "npm:postcss@5.1.2/lib/at-rule.js",
+      "npm:postcss@5.1.2/lib/comment.js",
+      "npm:postcss@5.1.2/lib/container.js",
+      "npm:postcss@5.1.2/lib/css-syntax-error.js",
+      "npm:postcss@5.1.2/lib/declaration.js",
+      "npm:postcss@5.1.2/lib/input.js",
+      "npm:postcss@5.1.2/lib/lazy-result.js",
+      "npm:postcss@5.1.2/lib/list.js",
+      "npm:postcss@5.1.2/lib/map-generator.js",
+      "npm:postcss@5.1.2/lib/node.js",
+      "npm:postcss@5.1.2/lib/parse.js",
+      "npm:postcss@5.1.2/lib/parser.js",
+      "npm:postcss@5.1.2/lib/postcss.js",
+      "npm:postcss@5.1.2/lib/previous-map.js",
+      "npm:postcss@5.1.2/lib/processor.js",
+      "npm:postcss@5.1.2/lib/result.js",
+      "npm:postcss@5.1.2/lib/root.js",
+      "npm:postcss@5.1.2/lib/rule.js",
+      "npm:postcss@5.1.2/lib/stringifier.js",
+      "npm:postcss@5.1.2/lib/stringify.js",
+      "npm:postcss@5.1.2/lib/tokenize.js",
+      "npm:postcss@5.1.2/lib/vendor.js",
+      "npm:postcss@5.1.2/lib/warn-once.js",
+      "npm:postcss@5.1.2/lib/warning.js",
+      "npm:process@0.11.9.js",
+      "npm:process@0.11.9/browser.js",
+      "npm:regenerate@1.3.2.js",
+      "npm:regenerate@1.3.2/regenerate.js",
+      "npm:regexpu-core@1.0.0.js",
+      "npm:regexpu-core@1.0.0/data/character-class-escape-sets.js",
+      "npm:regexpu-core@1.0.0/data/iu-mappings.json!github:systemjs/plugin-json@0.1.2.js",
+      "npm:regexpu-core@1.0.0/rewrite-pattern.js",
+      "npm:regjsgen@0.2.0.js",
+      "npm:regjsgen@0.2.0/regjsgen.js",
+      "npm:regjsparser@0.1.5.js",
+      "npm:regjsparser@0.1.5/parser.js",
+      "npm:source-map@0.5.6.js",
+      "npm:source-map@0.5.6/lib/array-set.js",
+      "npm:source-map@0.5.6/lib/base64-vlq.js",
+      "npm:source-map@0.5.6/lib/base64.js",
+      "npm:source-map@0.5.6/lib/binary-search.js",
+      "npm:source-map@0.5.6/lib/mapping-list.js",
+      "npm:source-map@0.5.6/lib/quick-sort.js",
+      "npm:source-map@0.5.6/lib/source-map-consumer.js",
+      "npm:source-map@0.5.6/lib/source-map-generator.js",
+      "npm:source-map@0.5.6/lib/source-node.js",
+      "npm:source-map@0.5.6/lib/util.js",
+      "npm:source-map@0.5.6/source-map.js",
+      "npm:supports-color@3.2.3.js",
+      "npm:supports-color@3.2.3/browser.js",
+      "npm:toposort@0.2.12.js",
+      "npm:toposort@0.2.12/index.js",
+      "npm:util@0.10.3.js",
+      "npm:util@0.10.3/support/isBufferBrowser.js",
+      "npm:util@0.10.3/util.js"
     ]
   },
   depCache: {

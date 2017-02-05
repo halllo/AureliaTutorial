@@ -1,5 +1,7 @@
 <template>
   <require from="./welcome.css"></require>
+  <require from="./module1.css!css!bind" as="module1"></require>
+  <require from="./module2.css!css!bind" as="module2"></require>
   
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
@@ -42,6 +44,12 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!--   CSS Modules   -->
+    <div class="section">
+      <p class.one-time="module1.farbigertext">Eins</p>
+      <p class.one-time="module2.farbigertext">Zwei</p>
     </div>
 
   </div>

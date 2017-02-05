@@ -1,0 +1,4 @@
+.farbigertext {
+  composes: common from "module0.css";
+  color: blue;
+}
