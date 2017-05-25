@@ -28,6 +28,8 @@ module.exports = {
         "aurelia-logging-console",
         "aurelia-pal-browser",
         "text",
+        "bootstrap",
+        "bootstrap/css/bootstrap.css!text",
         "fetch",
         "jquery"
       ],

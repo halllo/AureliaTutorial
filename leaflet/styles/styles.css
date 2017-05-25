@@ -1,0 +1,36 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+html {
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+  color: #5a5a5a;
+  margin: 0px;
+}
+
+.splash {
+  text-align: center;
+  padding: 10% 0 0 0;
+  box-sizing: border-box;
+}
+
+.splash .message {
+  font-size: 30px;
+  line-height: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.splash .fa-circle-o-notch {
+  text-align: center;
+  display: inline-block;
+  font-size: 50px;
+  margin-top: 90px;
+  margin-bottom: 30px;
+}

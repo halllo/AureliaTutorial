@@ -1,5 +1,5 @@
 export class Welcome {
 
-  public heading = 'Welcome';
+  public heading = 'Welcome Here';
 
 }
