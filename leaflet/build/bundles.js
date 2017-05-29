@@ -10,7 +10,7 @@ module.exports = {
         "inject": true,
         "minify": true,
         "depCache": true,
-        "rev": false
+        "rev": true
       }
     },
     "dist/vendor": {
@@ -37,7 +37,19 @@ module.exports = {
         "inject": true,
         "minify": true,
         "depCache": false,
-        "rev": false
+        "rev": true
+      }
+    },
+    "dist/leaflet": {
+      "includes": [
+        "leaflet",
+        "leaflet/dist/leaflet.css!text"
+      ],
+      "options": {
+        "inject": true,
+        "minify": true,
+        "depCache": false,
+        "rev": true
       }
     }
   }
