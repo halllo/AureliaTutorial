@@ -47,7 +47,7 @@ module.exports = {
       ],
       "options": {
         "inject": true,
-        "minify": true,
+        "minify": false,
         "depCache": false,
         "rev": true
       }
