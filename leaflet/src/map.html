@@ -4,7 +4,35 @@
   
   <div class="fullscreen">
 
-    <map-control>
+    <div class="mapinfo">
+      <div class="header">
+        <h1>nothing interesting here</h1>
+        <p>
+          <button class="btn btn-default" data-toggle="collapse" data-target="#list"><i class="fa fa-list" aria-hidden="true"></i></button>
+          <button class="btn btn-default" data-toggle="modal" data-target="#placeMarkerModal"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
+        </p>
+      </div>
+
+      <div id="list" class="collapse collapsed">
+        <ul class="mappointlist list-group">
+          <li class="list-group-item">
+            <p class="truncate-with-ellipsis">
+              <span class="text-muted">owned by</span> owner
+            </p>
+            <button class="btn btn-default" data-toggle="modal" data-target="#shareModal"><i class="fa fa-qrcode" aria-hidden="true"></i></button>
+            <button class="btn btn-default" click.delegate="zoomToBounds()"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+          </li>
+          <li class="list-group-item">
+            <p>Hallo</p>
+          </li>
+          <li class="list-group-item">
+            <p>Welt</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <map-control ref="mapControl">
     </map-control>
 
     <!--<div class="graphicmap">

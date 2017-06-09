@@ -2,3 +2,45 @@
   height: 100%; 
   min-height: 100%;
 }
+
+.mapinfo {
+  position: absolute;
+  display: block;
+  z-index: 1000;
+  width: 320px;
+}
+.mapinfo > .header {
+  padding-left: 5px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 5px;
+}
+.header > h1 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  padding: 7px;
+  font-size: 20px;
+  background: white;
+}
+.header > p {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+.mapinfo button.btn-default {
+  width: 40px;
+}
+.mappointlist > li > p {
+  margin: 0px;
+  padding-top: 0px;
+}
+.truncate-with-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.delete-button {
+  padding: 1px 5px 1px 5px;
+  margin: 0 0 2px 0;
+}

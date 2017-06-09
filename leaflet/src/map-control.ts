@@ -28,6 +28,12 @@ export class MapControl {
     newMarker.bindPopup("<b>Hello Point Of Interest</b><br>I am a popup at " + location.toString()).addTo(this.map);
     this.pointOfInterests.push(newMarker);
   }
+
+  public zoomToFit() {
+    alert("zoom to fit");
+    // var group = L.featureGroup(this.users);
+    // this.map.fitBounds(group.getBounds());
+  }
 }
 
 var UserIcon = L.Icon.extend({
