@@ -21,6 +21,7 @@
             </p>
             <button class="btn btn-default" data-toggle="modal" data-target="#shareModal"><i class="fa fa-qrcode" aria-hidden="true"></i></button>
             <button class="btn btn-default" click.delegate="zoomToBounds()"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+            <button class="btn btn-default" click.delegate="mapControl.moveTest()"><i class="fa fa-bath" aria-hidden="true"></i></button>
           </li>
           <li class="list-group-item">
             <p>Hallo</p>
@@ -32,13 +33,8 @@
       </div>
     </div>
 
-    <map-control ref="mapControl">
+    <map-control view-model.ref="mapControl">
     </map-control>
-
-    <!--<div class="graphicmap">
-      <span><strong>${heading}</strong></span>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </div>-->
 
   </div>
 
