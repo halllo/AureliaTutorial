@@ -1,11 +1,21 @@
 import * as L from 'leaflet';
 import environment from './environment';
+import {BindingEngine, Disposable, inject, bindable} from 'aurelia-framework';
 
+@inject(BindingEngine)
 export class MapControl {
 
   map: L.Map = null;
   users: L.Marker[] = [];
   pointOfInterests: L.Marker[] = [];
+
+  @bindable items: IItem[];
+  bindingEngine: BindingEngine;
+  subscription: Disposable;
+
+  constructor(bindingEngine: BindingEngine) {
+    this.bindingEngine = bindingEngine;
+  }
 
   public attached() {
     this.map = L.map('mapid', { zoomControl: false }).setView([49.01, 8.40], 13);
@@ -41,6 +51,45 @@ export class MapControl {
     let newPosition = new L.LatLng(oldPosition.lat + 1, oldPosition.lng + 1, oldPosition.alt);
     user.setLatLng(newPosition);
   }
+
+  
+  itemsChanged() {
+    this.unsubscribeItems();
+    this.subscribeItems();
+  }
+
+  subscribeItems() {
+    if (this.items) {
+      this.subscription = this.bindingEngine.collectionObserver(this.items)
+        .subscribe(splices => this.listChanged(splices));
+    }
+  }
+
+  unsubscribeItems() {
+    if (this.subscription) {
+      this.subscription.dispose();
+      this.subscription = null;
+    }
+  }
+
+  listChanged(splices) {
+    let addedItems: IItem[] = [];
+    let removedItems: IItem[] = [];
+    for (let splice of splices) {
+      let spliceAddedItems = this.items.slice(splice.index, splice.index + splice.addedCount);
+      addedItems.push(...spliceAddedItems);
+      removedItems.push(...splice.removed);
+    }
+
+    console.log("all: " + this.items.map(i => i.lat).join(", "));
+    console.log("added: " + addedItems.map(i => i.lat).join(", "));
+    console.log("removed: " + removedItems.map(i => i.lat).join(", "));
+  }
+}
+
+export interface IItem {
+  lat: number;
+  lng: number;
 }
 
 let UserIcon = L.Icon.extend({
