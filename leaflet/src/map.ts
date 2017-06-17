@@ -1,4 +1,4 @@
-import {MapControl, IMarker} from './map-control';
+import {MapControl, IMarker, IImageMarker} from './map-control';
 
 export class Map {
 
@@ -8,11 +8,11 @@ export class Map {
     this.myItems = [];
   }
 
-  add() {
-    let newItem = new MyItem();
+  addUser() {
+    let newItem = new MyUser();
     newItem.lat = 48.99759 + Math.random();
     newItem.lng = 8.4105 + Math.random();
-    newItem.icon = 'https://pbs.twimg.com/profile_images/797050317871476736/VktgLGli_400x400.jpg';
+    newItem.image = 'https://pbs.twimg.com/profile_images/797050317871476736/VktgLGli_400x400.jpg';
     newItem.popup = '<b>Hello User!</b><br>I am a popup.';
     this.myItems.push(newItem);
   }
@@ -30,12 +30,19 @@ export class Map {
 
     lastItem.changed();
   }
+
+  addPointOfInterest(location) {
+    let newItem = new MyPointOfInterst();
+    newItem.lat = location[0];
+    newItem.lng = location[1];
+    newItem.popup = `<b>Hello Point Of Interest</b><br>I am a popup at [${newItem.lat}, ${newItem.lng}].`;
+    this.myItems.push(newItem);
+  }
 }
 
-class MyItem implements IMarker {
+abstract class MyItem {
   lat: number;
   lng: number;
-  icon: string;
   popup: string;
 
   private notifyPropertiesChanged: () => void;
@@ -55,4 +62,11 @@ class MyItem implements IMarker {
       this.notifyPropertiesChanged();
     }
   }
+}
+
+class MyPointOfInterst extends MyItem implements IMarker {
+}
+
+class MyUser extends MyItem implements IImageMarker {
+  image: string;
 }

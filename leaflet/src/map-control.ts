@@ -5,11 +5,11 @@ import {BindingEngine, Disposable, inject, bindable} from 'aurelia-framework';
 @inject(BindingEngine)
 export class MapControl {
 
-  map: L.Map = null;
-  pointOfInterests: L.Marker[] = [];
-
+  @bindable onMapClicked;
   @bindable markers: IMarker[];
   markersAndLMarkers = new Map<IMarker, L.Marker>();
+
+  map: L.Map = null;
 
   bindingEngine: BindingEngine;
   subscription: Disposable;
@@ -20,7 +20,9 @@ export class MapControl {
 
   public attached() {
     this.map = L.map('mapid', { zoomControl: false }).setView([49.01, 8.40], 13);
-    this.map.on('click', e => this.setMarker(<L.LocationEvent>e));
+    this.map.on('click', (e: L.LocationEvent) => {
+      this.onMapClicked({ location: [e.latlng.lat, e.latlng.lng] });
+    });
     this.map.addLayer(L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token={accessToken}', { 
       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/feedback/" target="_blank">Improve this map</a></strong>',
       minZoom: 3,
@@ -29,16 +31,8 @@ export class MapControl {
     }));
   }
 
-  private setMarker(event: L.LocationEvent) {
-    let location = event.latlng;
-
-    let newMarker = L.marker(location, { icon: new PointOfInterestIcon() });
-    newMarker.bindPopup("<b>Hello Point Of Interest</b><br>I am a popup at " + location.toString()).addTo(this.map);
-    this.pointOfInterests.push(newMarker);
-  }
-
   public zoomToFit() {
-    let allMarkers = Array.from(this.markersAndLMarkers.values()).concat(this.pointOfInterests);
+    let allMarkers = Array.from(this.markersAndLMarkers.values());
     if (allMarkers.length > 0) {
       let group = L.featureGroup(allMarkers);
       this.map.fitBounds(group.getBounds());
@@ -71,12 +65,12 @@ export class MapControl {
       removedItems.push(...splice.removed);
     }
 
-    console.log("Markers: " + this.markers.map(i => this.markerString(i)).join(", "));
-    console.log("\tadded: " + addedItems.map(i => this.markerString(i)).join(", "));
-    console.log("\tremoved: " + removedItems.map(i => this.markerString(i)).join(", "));
-
     for (let added of addedItems) {
-      let newMarker = L.marker([added.lat, added.lng], { icon: new UserIcon({ iconUrl: added. icon }) })
+      let newMarker = L.marker([added.lat, added.lng], { 
+        icon: this.isImageMarker(added) 
+          ? new UserIcon({ iconUrl: added.image }) 
+          : new PointOfInterestIcon()
+      });
       newMarker.bindPopup(added.popup).addTo(this.map);
       this.markersAndLMarkers.set(added, newMarker);
       added.placed(() => this.markerChanged(added));
@@ -89,7 +83,14 @@ export class MapControl {
       removed.unplaced();
     }
 
-    console.log("LMarkers: " + Array.from(this.markersAndLMarkers.values()).map(m => this.coorindatesString(m.getLatLng())).join(", "));
+    if (environment.debug) {
+      console.log(
+        "Markers: " + this.markers.map(i => this.markerString(i)).join(", ") + "\n"
+        + "\tadded: " + addedItems.map(i => this.markerString(i)).join(", ") + "\n"
+        + "\tremoved: " + removedItems.map(i => this.markerString(i)).join(", ") + "\n"
+        + "LMarkers: " + Array.from(this.markersAndLMarkers.values()).map(m => this.coorindatesString(m.getLatLng())).join(", ")
+      );
+    }
   }
 
   private markerChanged(marker: IMarker) {
@@ -98,7 +99,9 @@ export class MapControl {
     let newPosition = new L.LatLng(marker.lat, marker.lng);
     lmarker.setLatLng(newPosition);
     lmarker.getPopup().setContent(marker.popup);
-    console.log(`\tchanged: ${this.coorindatesString(oldPosition)} -> ${this.coorindatesString(newPosition)}`);
+    if (environment.debug) {
+      console.log(`\tchanged: ${this.coorindatesString(oldPosition)} -> ${this.coorindatesString(newPosition)}`);
+    }
   }
 
   private coorindatesString(position: L.LatLng) {
@@ -107,15 +110,21 @@ export class MapControl {
   private markerString(marker: IMarker) {
     return `[${marker.lat}, ${marker.lng}]`;
   }
+  private isImageMarker(marker: IMarker): marker is IImageMarker {
+    return (<IImageMarker>marker).image !== undefined;
+  }
 }
 
 export interface IMarker {
   lat: number;
   lng: number;
-  icon: string;
   popup: string;
   placed: (notifyPropertiesChanged: () => void) => void;
   unplaced: () => void;
+}
+
+export interface IImageMarker extends IMarker {
+  image: string;
 }
 
 let UserIcon = L.Icon.extend({
