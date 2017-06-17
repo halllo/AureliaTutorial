@@ -44,33 +44,25 @@ export class MapControl {
       this.map.fitBounds(group.getBounds());
     }
   }
-
-  public moveTest() {
-    let user = this.markersAndLMarkers[0];
-    let oldPosition = user.getLatLng();
-    let newPosition = new L.LatLng(oldPosition.lat + 1, oldPosition.lng + 1, oldPosition.alt);
-    user.setLatLng(newPosition);
-  }
-
   
-  markersChanged() {
+  private markersChanged() {
     this.unsubscribeMarkers();
     this.subscribeMarkers();
   }
-  subscribeMarkers() {
+  private subscribeMarkers() {
     if (this.markers) {
       this.subscription = this.bindingEngine.collectionObserver(this.markers)
         .subscribe(splices => this.listChanged(splices));
     }
   }
-  unsubscribeMarkers() {
+  private unsubscribeMarkers() {
     if (this.subscription) {
       this.subscription.dispose();
       this.subscription = null;
     }
   }
 
-  listChanged(splices) {
+  private listChanged(splices) {
     let addedItems: IMarker[] = [];
     let removedItems: IMarker[] = [];
     for (let splice of splices) {
@@ -79,23 +71,41 @@ export class MapControl {
       removedItems.push(...splice.removed);
     }
 
-    console.log("Markers: " + this.markers.map(i => i.lat).join(", "));
-    console.log("added: " + addedItems.map(i => i.lat).join(", "));
-    console.log("removed: " + removedItems.map(i => i.lat).join(", "));
+    console.log("Markers: " + this.markers.map(i => this.markerString(i)).join(", "));
+    console.log("\tadded: " + addedItems.map(i => this.markerString(i)).join(", "));
+    console.log("\tremoved: " + removedItems.map(i => this.markerString(i)).join(", "));
 
     for (let added of addedItems) {
       let newMarker = L.marker([added.lat, added.lng], { icon: new UserIcon({ iconUrl: added. icon }) })
       newMarker.bindPopup(added.popup).addTo(this.map);
       this.markersAndLMarkers.set(added, newMarker);
+      added.placed(() => this.markerChanged(added));
     }
 
     for (let removed of removedItems) {
       let removedMarker = this.markersAndLMarkers.get(removed);
       this.markersAndLMarkers.delete(removed);
       removedMarker.removeFrom(this.map);
+      removed.unplaced();
     }
 
-    console.log("LMarkers: " + Array.from(this.markersAndLMarkers.values()).map(m => m.getLatLng().lat).join(", "));
+    console.log("LMarkers: " + Array.from(this.markersAndLMarkers.values()).map(m => this.coorindatesString(m.getLatLng())).join(", "));
+  }
+
+  private markerChanged(marker: IMarker) {
+    var lmarker = this.markersAndLMarkers.get(marker);
+    let oldPosition = lmarker.getLatLng();
+    let newPosition = new L.LatLng(marker.lat, marker.lng);
+    lmarker.setLatLng(newPosition);
+    lmarker.getPopup().setContent(marker.popup);
+    console.log(`\tchanged: ${this.coorindatesString(oldPosition)} -> ${this.coorindatesString(newPosition)}`);
+  }
+
+  private coorindatesString(position: L.LatLng) {
+    return `[${position.lat}, ${position.lng}]`;
+  }
+  private markerString(marker: IMarker) {
+    return `[${marker.lat}, ${marker.lng}]`;
   }
 }
 
@@ -104,6 +114,8 @@ export interface IMarker {
   lng: number;
   icon: string;
   popup: string;
+  placed: (notifyPropertiesChanged: () => void) => void;
+  unplaced: () => void;
 }
 
 let UserIcon = L.Icon.extend({

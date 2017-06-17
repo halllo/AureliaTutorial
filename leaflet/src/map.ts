@@ -2,8 +2,8 @@ import {MapControl, IMarker} from './map-control';
 
 export class Map {
 
-  myItems: IMarker[]
-
+  myItems: MyItem[];
+  
   constructor() {
     this.myItems = [];
   }
@@ -17,8 +17,18 @@ export class Map {
     this.myItems.push(newItem);
   }
   
-  remove() {
+  removeLast() {
     this.myItems.splice(this.myItems.length - 1, 1);
+  }
+
+  moveLast() {
+    let lastItem = this.myItems[this.myItems.length - 1];
+
+    lastItem.lat = lastItem.lat + 0.1;
+    lastItem.lng = lastItem.lng + 0.1;
+    lastItem.popup = lastItem.popup + "!";
+
+    lastItem.changed();
   }
 }
 
@@ -27,4 +37,22 @@ class MyItem implements IMarker {
   lng: number;
   icon: string;
   popup: string;
+
+  private notifyPropertiesChanged: () => void;
+  
+  placed(notifyPropertiesChanged: () => void) {
+    this.notifyPropertiesChanged = notifyPropertiesChanged;
+    console.warn("placed");
+  }
+
+  unplaced() {
+    console.warn("unplaced");
+    this.notifyPropertiesChanged = null;
+  }
+
+  changed() {
+    if (this.notifyPropertiesChanged) { 
+      this.notifyPropertiesChanged();
+    }
+  }
 }
