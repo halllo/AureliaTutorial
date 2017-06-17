@@ -6,10 +6,11 @@ import {BindingEngine, Disposable, inject, bindable} from 'aurelia-framework';
 export class MapControl {
 
   map: L.Map = null;
-  users: L.Marker[] = [];
   pointOfInterests: L.Marker[] = [];
 
-  @bindable items: IItem[];
+  @bindable markers: IMarker[];
+  markersAndLMarkers = new Map<IMarker, L.Marker>();
+
   bindingEngine: BindingEngine;
   subscription: Disposable;
 
@@ -26,10 +27,6 @@ export class MapControl {
       maxZoom: 20,
       accessToken: environment.MAPBOX_AK,
     }));
-    
-    let marker = L.marker([48.99759, 8.4105], { icon: new UserIcon({ iconUrl: 'https://pbs.twimg.com/profile_images/797050317871476736/VktgLGli_400x400.jpg' }) })
-    marker.bindPopup("<b>Hello User!</b><br>I am a popup.").addTo(this.map);
-    this.users.push(marker);
   }
 
   private setMarker(event: L.LocationEvent) {
@@ -41,31 +38,32 @@ export class MapControl {
   }
 
   public zoomToFit() {
-    let group = L.featureGroup(this.users.concat(this.pointOfInterests));
-    this.map.fitBounds(group.getBounds());
+    let allMarkers = Array.from(this.markersAndLMarkers.values()).concat(this.pointOfInterests);
+    if (allMarkers.length > 0) {
+      let group = L.featureGroup(allMarkers);
+      this.map.fitBounds(group.getBounds());
+    }
   }
 
   public moveTest() {
-    let user = this.users[0];
+    let user = this.markersAndLMarkers[0];
     let oldPosition = user.getLatLng();
     let newPosition = new L.LatLng(oldPosition.lat + 1, oldPosition.lng + 1, oldPosition.alt);
     user.setLatLng(newPosition);
   }
 
   
-  itemsChanged() {
-    this.unsubscribeItems();
-    this.subscribeItems();
+  markersChanged() {
+    this.unsubscribeMarkers();
+    this.subscribeMarkers();
   }
-
-  subscribeItems() {
-    if (this.items) {
-      this.subscription = this.bindingEngine.collectionObserver(this.items)
+  subscribeMarkers() {
+    if (this.markers) {
+      this.subscription = this.bindingEngine.collectionObserver(this.markers)
         .subscribe(splices => this.listChanged(splices));
     }
   }
-
-  unsubscribeItems() {
+  unsubscribeMarkers() {
     if (this.subscription) {
       this.subscription.dispose();
       this.subscription = null;
@@ -73,23 +71,39 @@ export class MapControl {
   }
 
   listChanged(splices) {
-    let addedItems: IItem[] = [];
-    let removedItems: IItem[] = [];
+    let addedItems: IMarker[] = [];
+    let removedItems: IMarker[] = [];
     for (let splice of splices) {
-      let spliceAddedItems = this.items.slice(splice.index, splice.index + splice.addedCount);
+      let spliceAddedItems = this.markers.slice(splice.index, splice.index + splice.addedCount);
       addedItems.push(...spliceAddedItems);
       removedItems.push(...splice.removed);
     }
 
-    console.log("all: " + this.items.map(i => i.lat).join(", "));
+    console.log("Markers: " + this.markers.map(i => i.lat).join(", "));
     console.log("added: " + addedItems.map(i => i.lat).join(", "));
     console.log("removed: " + removedItems.map(i => i.lat).join(", "));
+
+    for (let added of addedItems) {
+      let newMarker = L.marker([added.lat, added.lng], { icon: new UserIcon({ iconUrl: added. icon }) })
+      newMarker.bindPopup(added.popup).addTo(this.map);
+      this.markersAndLMarkers.set(added, newMarker);
+    }
+
+    for (let removed of removedItems) {
+      let removedMarker = this.markersAndLMarkers.get(removed);
+      this.markersAndLMarkers.delete(removed);
+      removedMarker.removeFrom(this.map);
+    }
+
+    console.log("LMarkers: " + Array.from(this.markersAndLMarkers.values()).map(m => m.getLatLng().lat).join(", "));
   }
 }
 
-export interface IItem {
+export interface IMarker {
   lat: number;
   lng: number;
+  icon: string;
+  popup: string;
 }
 
 let UserIcon = L.Icon.extend({
